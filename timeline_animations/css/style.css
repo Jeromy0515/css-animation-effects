@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900%display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(#2b1055,#7597de); /* gradient는 한 방향에서 다른 방향으로 색이 점차 흐려지거나, 색이 변화하는 효과를 줄 때 사용 */
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* height: 100vh 100%의 뷰 하이를 다 쓰겠다 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 넘치는 요소를 잘라줍니다 */
+}
+
+section > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none; /* pointer-events 는 HTML 요소들의 마우스/터치 이벤트들(CSS hover/active, JS click/tap, 커서 드래그등)의 응답을 조정할 수 있는 속성 */
+    /* none : HTML 요소에 정의된 클릭, 상태(hover,active등), 커서 옵션들이 비활성화한다. */
+}
+
+section > img#moon {
+    top: -100%;
+    mix-blend-mode: screen; /* 어느 요소의 콘텐츠가 자신의 배경 및 부모와 어떻게 혼합되어야 하는지 지정합니다. */
+}
+
+section > img#stars {
+    top: -100%; /* -100%~0px 로 이동 */
+    height: 100%;
+    object-fit: cover;
+    /* object-fit 속성은 <img>나 <video> 요소와 같은 대체 요소의 콘텐츠 크기를 어떤 방식으로 조절해 요소에 맞출 것인지 지정합니다. */
+    /* cover : 대체 콘텐츠의 가로세로비를 유지하면서, 요소 콘텐츠 박스를 가득 채웁니다. 서로의 가로세로비가 일치하지 않으면 객체 일부가 잘려나갑니다.*/
+}
+
+section > img#mountains_behind {
+    bottom: -100%;
+    top: initial; /* initial 이 속성의 기본값으로 설정(초기화) */
+}
+
+section > img#mountains_front {
+    bottom: -100%;
+    top: initial;
+    z-index: 1000;
+}
+
+#text {
+    position: absolute;
+    color: #fff;
+    font-size: 8vw;
+    font-weight: 200;
+    margin-right: -3000px;
+    z-index: 5000;
+}
+
+#text > span {
+    font-weight: 700;
+}
+
+#btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-decoration: none;
+    margin-top: 80px;
+    display: inline-block;
+    padding: 8px 50px;
+    background: #fff;
+    border-radius: 40px;
+    font-size: 1.4em;
+    color: #2b1055;
+    z-index: 10000;
+}

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root { /* :root HTML문서의 루트요소 <html> <- */
+    --main-clr: #222327; /* root 가상 클래스는 보통 전역변수를 선언할 때 사용*/
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--main-clr);
+}
+
+.navigation {
+    width: 400px;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.navigation > ul {
+    position: relative;
+    display: flex;
+    width: 350px;
+}
+
+.navigation > ul > li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1; /* z-index 요소가 쌓이는 순서결정 (오름차순) */
+}
+
+.navigation > ul > li > a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 요소를 세로로 배치 */
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.navigation > ul > li > a > .icon {
+    position: relative;
+    display: block;
+    line-height: 75px; /* line-height 는 line-box 의 높이를 지정 */
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s; /* 애니메이션 속도 설정 */
+    color: var(--main-clr);
+}
+
+.navigation > ul > li.active > a > .icon {
+    transform: translateY(-32px); /* transform 속성으로 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있습니다 */
+}
+
+.navigation > ul > li > a > .text {
+    position: absolute;
+    color: var(--main-clr);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em; /* 글자사이 간격 조정 */
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.navigation > ul > li.active > a > .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator {
+    position: absolute; /* position absolute 가 부모 요소에 종속적이게 할려면 부모요소에 position relative를 지정해 줘야함*/
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: #29fd53;
+    border-radius: 50%;
+    border: 6px solid var(--main-clr);
+    transition: 0.5s;
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -10px 0 0 var(--main-clr); /* 요소의 테두리를 감싼 그림자 효과를 추가 offset-x | offset-y | blur-radius | spread-radius */
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: 0 -10px 0 0 var(--main-clr);
+}
+
+.navigation > ul > li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation > ul > li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+}
+
+.navigation > ul > li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation > ul > li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(70px * 3));
+}
+
+.navigation > ul > li:nth-child(5).active ~ .indicator {
+    transform: translateX(calc(70px * 4));
+}
+
